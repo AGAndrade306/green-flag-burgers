@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Green Flag Burgers - Faça seu Pedido</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        @font-face {
+            font-family: 'Satoshi';
+            src: url('/mnt/data/Satoshi-VariableItalic.ttf') format('truetype');
+            font-weight: normal;
+            font-style: italic;
+        }
+        @font-face {
+            font-family: 'Quentin';
+            src: url('/mnt/data/QuentinRegular.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+        body {
+            font-family: 'Quentin', sans-serif;
+            background-color: #FFFFFF;
+            color: #04331;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        header, footer {
+            background-color: #025928;
+            padding: 20px;
+            color: #FFE0B3;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        header img {
+            height: 50px;
+            margin-right: 10px;
+        }
+        footer img {
+            height: 80px;
+        }
+        h1, h2 {
+            font-family: 'Satoshi', sans-serif;
+        }
+        .carousel-container {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+        .carousel-wrapper {
+            position: relative;
+            overflow: hidden;
+            padding: 10px 0;
+            display: flex;
+            align-items: center;
+        }
+        .carousel {
+            display: flex;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+            white-space: nowrap;
+            padding: 10px 0;
+            flex-grow: 1;
+        }
+        .menu {
+            background-color: #025928;
+            color: #FFE0B3;
+            padding: 20px;
+            margin: 10px;
+            border-radius: 10px;
+            display: inline-block;
+            width: 80%;
+            max-width: 300px;
+        }
+        .carousel-nav {
+            background-color: rgba(0, 0, 0, 0.3);
+            color: white;
+            border: none;
+            padding: 12px;
+            cursor: pointer;
+            border-radius: 50%;
+            font-size: 24px;
+            transition: background 0.3s;
+        }
+        .cart-popup {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: rgba(2, 89, 40, 0.9);
+            color: #FFE0B3;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 250px;
+        }
+        .cart-popup img {
+            width: 100%;
+            max-width: 200px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="/mnt/data/GreenFlag-Elementos-RGB_GF-team-01.png" alt="Ícone Green Flag">
+        <h1>Green Flag Burgers</h1>
+    </header>
+    <main>
+        <div class="carousel-container">
+            <h2>Combos</h2>
+            <div class="carousel-wrapper">
+                <button class="carousel-nav prev" onclick="scrollCarousel(this, -1)">❮</button>
+                <div class="carousel" id="combos">
+                    <div class="menu">Combo Pepperoncino - R$42,00</div>
+                    <div class="menu">Combo Green - R$39,50</div>
+                    <div class="menu">Combo Royal - R$39,50</div>
+                    <div class="menu">Combo American - R$40,00</div>
+                    <div class="menu">Combo Vera Cruz - R$39,50</div>
+                    <div class="menu">Combo Milão - R$40,00</div>
+                </div>
+                <button class="carousel-nav next" onclick="scrollCarousel(this, 1)">❯</button>
+            </div>
+            <h2>Lanches</h2>
+            <div class="carousel-wrapper">
+                <button class="carousel-nav prev" onclick="scrollCarousel(this, -1)">❮</button>
+                <div class="carousel" id="lanches">
+                    <div class="menu">Pepperoncino - R$25,50</div>
+                    <div class="menu">Green - R$23,00</div>
+                    <div class="menu">Royal - R$25,00</div>
+                    <div class="menu">American - R$25,50</div>
+                    <div class="menu">Vera Cruz - R$25,50</div>
+                    <div class="menu">Milão - R$27,50</div>
+                </div>
+                <button class="carousel-nav next" onclick="scrollCarousel(this, 1)">❯</button>
+            </div>
+            <h2>Bebidas e Acompanhamentos</h2>
+            <div class="carousel-wrapper">
+                <button class="carousel-nav prev" onclick="scrollCarousel(this, -1)">❮</button>
+                <div class="carousel" id="bebidas">
+                    <div class="menu">Batata - R$14,00</div>
+                    <div class="menu">Coca-Cola - R$6,50</div>
+                    <div class="menu">Coca-Cola Zero - R$6,50</div>
+                    <div class="menu">Guaraná - R$6,50</div>
+                    <div class="menu">Guaraná Zero - R$6,50</div>
+                </div>
+                <button class="carousel-nav next" onclick="scrollCarousel(this, 1)">❯</button>
+            </div>
+        </div>
+    </main>
+    <div class="cart-popup" id="cart-popup">
+        <img src="/mnt/data/GreenFlag-IDENTIDADE-RGB_HORIZCompleta-02.png" alt="Logo Green Flag">
+        <h3>Seu Pedido</h3>
+        <ul id="cart-list"></ul>
+        <button class="checkout-button" onclick="sendOrder()">Finalizar Pedido no WhatsApp</button>
+    </div>
+    <footer>
+        <img src="/mnt/data/GreenFlag-IDENTIDADE-RGB_HORIZCompleta-02.png" alt="Logo Green Flag">
+    </footer>
+</body>
+</html>
+
